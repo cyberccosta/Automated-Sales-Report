@@ -8,7 +8,7 @@ Script em Python que lê os dados de vendas do dia e envia, por e-mail, um relat
 
 ## ✨ O que ele faz
 
-- 💵 Calcula o total vendido no dia e compara com o dia anterior (📈 / 📉)
+- 💵 Calcula o total vendido no dia e compara com o dia anterior
 - 🧾 Mostra número de vendas e ticket médio
 - 🏆 Monta um **ranking de vendedores** com medalhas 🥇🥈🥉 e barras de progresso
 - 📦 Resume as vendas por produto
@@ -18,7 +18,7 @@ Script em Python que lê os dados de vendas do dia e envia, por e-mail, um relat
 
 ## 🛠️ Tecnologias
 
-Python 3.10+, pandas, SMTP (smtplib) e python-dotenv.
+Python, pandas, SMTP (smtplib) e python-dotenv.
 
 ## 🔄 Como funciona
 
@@ -82,42 +82,11 @@ No topo do `relatorio_vendas.py`, ajuste a tabela `COMISSAO_POR_PRODUTO`. Produt
 
 **Windows:** Agendador de Tarefas, com gatilho diário executando `python relatorio_vendas.py` na pasta do projeto.
 
-**Sem depender de um computador ligado:** GitHub Actions com agendamento (`schedule`) ou um servidor/VM.
-
-## 🗄️ Adaptando para um banco SQL
-
-Só a etapa de carregamento muda: em vez de ler um CSV, o script consulta o banco e devolve as mesmas colunas.
-
-```python
-import os
-import pandas as pd
-from sqlalchemy import create_engine
-
-engine = create_engine(os.environ["DATABASE_URL"])
-df = pd.read_sql("SELECT data, vendedor, produto, quantidade, valor_unitario FROM vendas WHERE data >= CURRENT_DATE - 2", engine)
-```
-
-Recomendações para uso em empresas:
-
-- Use um usuário **somente leitura** no banco
-- Traga apenas o período necessário (ontem e anteontem)
-- Guarde as taxas de comissão numa tabela ou planilha mantida pelo financeiro
-- Rode o agendamento **depois** do fechamento das vendas do dia
-- Valide os números contra os relatórios oficiais antes de entrar em produção
-
 ## 🔐 Segurança
 
 - Credenciais ficam em variáveis de ambiente, nunca no código
 - Dados reais de clientes não devem ser versionados
 - Em ambientes corporativos, alinhe com a empresa o tratamento dos dados conforme a LGPD
-
-## 🗺️ Próximos passos
-
-- [ ] Resumo escrito por IA no topo do relatório
-- [ ] Metas por vendedor (acima/abaixo da meta)
-- [ ] Anexo em PDF ou Excel
-- [ ] Relatórios semanais e mensais
-- [ ] Execução automática com GitHub Actions
 
 ## 👤 Autor
 
