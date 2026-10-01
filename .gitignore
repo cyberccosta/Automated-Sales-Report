@@ -1,0 +1,16 @@
+# Segredos: NUNCA envie para o GitHub
+.env
+
+# Arquivos gerados pelo script
+vendas.csv
+relatorio.html
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# Sistema
+.DS_Store
+Thumbs.db
