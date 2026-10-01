@@ -30,8 +30,8 @@ Python, pandas, SMTP (smtplib) e python-dotenv.
 ## 🚀 Instalação
 
 ```bash
-git clone https://github.com/SEU_USUARIO/relatorio-vendas-automatico.git
-cd relatorio-vendas-automatico
+git clone https://github.com/cyberccosta/Automated-Sales-Report
+cd Automated-Sales-Report
 
 python -m venv venv
 # Windows:  venv\Scripts\activate
